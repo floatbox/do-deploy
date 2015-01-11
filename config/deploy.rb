@@ -42,22 +42,7 @@ namespace :deploy do
 
   desc 'Restart application'
   task :restart do
-    invoke 'unicorn:restart'
-  end
-
-  task :setup do
-    before "deploy:migrate", :create_db
-    invoke :deploy
-  end
-
-  task :create_db do
-    on roles(:all) do
-      within release_path do
-        with rails_env: fetch(:rails_env) do
-          execute :rake, "db:create"
-        end
-      end
-    end
+    invoke 'unicorn:legacy_restart'
   end
 
 end
