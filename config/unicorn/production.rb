@@ -1,6 +1,7 @@
 
 # Рабочие директории приложения на сервере
 root        = '/home/deployer/apps/tweetstream'
+working_directory = root
 rails_root  = "#{root}/current"
 
 # Файлы, хранящие идентификаторы запущенных Unicorn-процессов
