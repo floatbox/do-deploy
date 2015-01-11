@@ -45,4 +45,6 @@ namespace :deploy do
     invoke 'unicorn:legacy_restart'
   end
 
+  after :publishing, :restart
+
 end
