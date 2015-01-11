@@ -40,12 +40,23 @@ set :keep_releases, 5
 
 namespace :deploy do
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+  desc 'Restart application'
+  task :restart do
+    invoke 'unicorn:restart'
+  end
+
+  task :setup do
+    before "deploy:migrate", :create_db
+    invoke :deploy
+  end
+
+  task :create_db do
+    on roles(:all) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, "db:create"
+        end
+      end
     end
   end
 
