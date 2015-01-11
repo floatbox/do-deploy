@@ -1,9 +1,10 @@
+
 # Рабочие директории приложения на сервере
 root        = '/home/deployer/apps/tweetstream'
 rails_root  = "#{root}/current"
 
 # Файлы, хранящие идентификаторы запущенных Unicorn-процессов
-pidfile     = "#{root}/shared/run/unicorn.pid"
+pidfile     = "#{root}/shared/tmp/pids/unicorn.pid"
 pidfile_old = pidfile + '.oldbin'
 pid pidfile
 
@@ -13,7 +14,7 @@ preload_app true
 timeout 30
 
 # Путь к сокету
-listen "#{root}/shared/run/unicorn.sock", :backlog => 1024
+listen "#{root}/shared/tmp/sockets/unicorn.sock", :backlog => 1024
 
 # Путь к лог-файлам
 stderr_path "#{rails_root}/log/unicorn_error.log"
