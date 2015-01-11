@@ -8,8 +8,6 @@ role :app, %w{deployer@188.166.25.123}
 role :web, %w{deployer@188.166.25.123}
 role :db,  %w{deployer@188.166.25.123}
 
-set :deploy_to, '/home/deployer/apps/tweetstream'
-
 
 # Extended Server Syntax
 # ======================
@@ -19,11 +17,12 @@ set :deploy_to, '/home/deployer/apps/tweetstream'
 
 server '188.166.25.123',
   user: 'deployer',
-  roles: %w{web app db},
-  ssh_options: {
-    user: 'deployer', # overrides user setting above
-    keys: %w(~/.ssh/digital_ocean_rsa),
+  roles: %w{web app db}
+
+set :ssh_options, {
+    keys: %w(/Users/arefiev/.ssh/digital_ocean_rsa),
     forward_agent: false,
+    port: 6622,
     auth_methods: %w(publickey)
   }
 
