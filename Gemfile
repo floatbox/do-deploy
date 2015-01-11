@@ -47,3 +47,12 @@ group :development, :test do
   gem 'spring'
 end
 
+group :development do
+  gem 'capistrano', '~> 3.3.0'
+  gem 'capistrano-rvm'
+  gem 'capistrano-rails'
+end
+
+group :production do
+  gem 'unicorn'
+end
