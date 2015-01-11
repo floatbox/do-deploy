@@ -21,7 +21,7 @@ server '188.166.25.123',
 
 set :ssh_options, {
     keys: %w(/Users/arefiev/.ssh/digital_ocean_rsa),
-    forward_agent: false,
+    forward_agent: true,
     port: 6622,
     auth_methods: %w(publickey)
   }
