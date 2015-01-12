@@ -19,3 +19,4 @@
 
 /.capistrano
 /config/secrets.yml
+/.ruby-version
